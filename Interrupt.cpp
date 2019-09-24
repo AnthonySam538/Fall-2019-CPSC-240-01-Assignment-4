@@ -73,9 +73,9 @@ int main()
 		mov cx, ax; //store a copy of the data in cx to avoid overwriting ax when using "and"
 		and cx, 1; //cx = ax & 0000 0000 0000 0001
 		cmp cx, 0;
-		je Bit1Is0; //skips over the next line
+		je Bit15Is0; //skips over the next line
 		inc bx; //increment by 1
-	Bit1Is0:
+	Bit15Is0:
 		shr ax, 1;
 		mov cx, ax;
 		and cx, 1;

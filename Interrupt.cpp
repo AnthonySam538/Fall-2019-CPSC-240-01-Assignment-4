@@ -4,27 +4,6 @@ using namespace std;
 
 short ram = 1, floppyDrives = 1, printers = 0;
 
-//void readBits()
-//{
-//	_asm
-//	{
-//		mov cx, ax; //store a copy of the data in cx to avoid overwriting ax when using "and"
-//		and cx, one; //cx = ax & 0000 0000 0000 0001
-//		mov printers, cx;
-//		cmp cx, 0;
-//		je BitIs0; //skips over the next line
-//		inc bx; //increment by 1
-//	BitIs0:
-//		shr ax, 1;
-//		mov cx, ax;
-//		and cx, one;
-//		cmp cx, 0;
-//		je NextBitIs0;
-//		add bx, 2; //increment by 2
-//	NextBitIs0:
-//	}
-//}
-
 int main()
 {
 	_asm
@@ -40,7 +19,7 @@ int main()
 		je Bit3Is0; //skips over the next line
 		inc bx; //increment by 1
 	Bit3Is0:
-		shr ax, 1;
+		shr ax, 1; //move to bit 4
 		mov cx, ax;
 		and cx, 1;
 		cmp cx, 0;
@@ -58,7 +37,7 @@ int main()
 		je Bit7Is0; //skips over the next line
 		inc bx; //increment by 1
 	Bit7Is0:
-		shr ax, 1;
+		shr ax, 1; //move to bit 8
 		mov cx, ax;
 		and cx, 1;
 		cmp cx, 0;
@@ -76,7 +55,7 @@ int main()
 		je Bit15Is0; //skips over the next line
 		inc bx; //increment by 1
 	Bit15Is0:
-		shr ax, 1;
+		shr ax, 1; //move to bit 16
 		mov cx, ax;
 		and cx, 1;
 		cmp cx, 0;

@@ -2,8 +2,8 @@
 
 using namespace std;
 
-const short AX_REGISTER = 37132;
-short current, currentFloor = 16, n; // 1001 0001 0000 1100
+const short AX_REGISTER = 37132; // 1001 0001 0000 1100 in binary
+short current, currentFloor = 16, n;
 
 void Base2()
 {
@@ -24,6 +24,7 @@ void Base2()
 
 		n = n << 1;
 	}
+	cout << endl;
 }
 
 void displayCurrentFloor()
@@ -45,7 +46,6 @@ int main()
 		cmp currentFloor, 1;
 		jl ExitLoop;
 
-		mov ax, AX_REGISTER; //store a copy of AX_REGISTER in ax
 		mov bx, 1; //bx will be left-shifted by cx
 		mov cx, currentFloor; //currentFloor controls the for loop & cx controls the nested for loop
 
@@ -61,7 +61,7 @@ int main()
 	ExitNestedForLoop:
 
 		//and bx with ax, then use it to determine if we're stopping at this floor
-		and bx, ax; //On the first run, bx = 1000000000000000 & 1001 0001 0000 1100 = 1 != 0
+		and bx, AX_REGISTER; //On the first run, bx = 1000000000000000 & 1001 0001 0000 1100 = 1 != 0
 		cmp bx, 0;
 		je FloorIs0;
 		call displayCurrentFloor;
